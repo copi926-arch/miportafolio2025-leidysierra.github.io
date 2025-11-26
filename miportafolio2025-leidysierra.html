@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio Digital 2025 - Leidy Sierra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;800&family=Caprasimo&display=swap" rel="stylesheet">
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <style>
+    :root{
+      --bg: #ffd6e8; /* rosa suave */
+      --card: #fff6f8; /* blanco rosado */
+      --accent: #ff7aa2; /* fucsia pastel */
+      --muted: #ffdede;
+      --green: #d0f0e0;
+      --purple: #d9c7ff;
+      --beige: #fff0e0;
+      --text: #5a3d3d;
+      --shadow: 0 8px 20px rgba(95,50,80,0.12);
+      --round: 16px;
+    }
+
+
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Jost', sans-serif;
+      background: linear-gradient(180deg,var(--bg), #ffdfea 60%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .resume {
+      width:100%;
+      max-width:920px;
+      background:var(--card);
+      border-radius:20px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      border:6px solid rgba(255,255,255,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .tabs{display:flex;gap:8px;margin-bottom:12px}
+    .tab{background:var(--muted);padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px}
+    .tab:nth-child(2){background:var}
+    .tab:nth-child(3){background:var}
+    .tab:nth-child(4){background:var}
+
+   
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+
+   
+    .left{display:flex;flex-direction:column;gap:18px}
+
+    .polaroid{
+      background:white;padding:12px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.08);width:100%;max-width:320px;
+      transform:rotate(-2deg);
+    }
+    .polaroid img{width:100%;height:260px;object-fit:cover;border-radius:6px;display:block}
+    .caption{font-family:'Caprasimo', cursive;font-size:18px;color:var;text-align:center;margin-top:8px}
+
+    .about{
+      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,250,250,0.9));
+      padding:14px;border-radius:12px;box-shadow:var;
+    }
+    .name{font-size:28px;font-weight:800;color:var(--accent);letter-spacing:1px}
+    .job{font-weight:600;color:#7b4b63;margin-top:6px}
+    .desc{font-size:14px;margin-top:10px;line-height:1.45}
+
+    .contact{
+      background:#fff;border-radius:12px;padding:12px;margin-top:6px;border:1px solid rgba(255,122,162,0.08);
+    }
+    .contact p{margin:8px 0;font-size:15px}
+    .contact .meta{display:flex;gap:10px;align-items:center}
+
+   
+    .right{display:flex;flex-direction:column;gap:16px}
+
+    .skills-card{background:linear-gradient(180deg,#fff,#fff6f8);padding:16px;border-radius:12px;box-shadow:var}
+    .skills-title{display:inline-block;background:var;color:white;padding:6px 12px;border-radius:999px;font-weight:700}
+
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .badge{padding:10px 14px;border-radius:10px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.06);font-size:14px}
+    .badge.pink{background:#ffd6e8;color:#b03a66}
+    .badge.yellow{background:#fff0b8;color:#b47a26}
+    .badge.green{background:#dff6ec;color:#2d6b59}
+    .badge.turq{background:#cbeff3;color:#0f5a6a}
+    .badge.purp{background:#eadcff;color:#5c3a86}
+
+    .software{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .sw{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;background:rgba(255,255,255,0.7);box-shadow:0 6px 16px rgba(0,0,0,0.06);}
+
+    
+    footer{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+     footer { background-color: #fff0b8; text-align: center; padding: 10px; }
+
+    
+    heart{position:absolute;top:20px;right:18px;width:36px;height:36px;border-radius:999px;background:var #ff7aa2;display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+
+   
+    @media (max-width:800px){
+      .cols{grid-template-columns:1fr;}
+      .polaroid img{height:220px}
+      .resume{padding:18px}
+    }
+  
+
+#ilustracion img{
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#ilustracion img:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* MODAL */
+.img-modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.img-modal img{
+  max-width:85%;
+  max-height:85%;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  animation: zoomIn 0.3s ease;
+}
+
+.img-modal span{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:40px;
+  font-weight:bold;
+  color:white;
+  cursor:pointer;
+}
+
+@keyframes zoomIn{
+  from{transform:scale(0.6); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+
+
+
+</style>
+
+
+</head>
+<body>
+  <div class="resume">
+    <div class="tabs">
+  <img src="img/icono.png" alt="icono" style="width:90px;height:90px;border-radius:8px;object-fit:cover;">
+
+      <style="width:32px;height:32px;border-radius:8px;object-fit:cover;">
+      <a class="tab" href="#sobre">SOBRE MÍ</a>
+      <a class="tab" href="#diseno">HABILIDADES</a>
+      <a class="tab" href="#ilustracion">MIS TRABAJOS</a>
+      <a class="tab" href="#redessociales">REDES SOCIALES</a>
+    </div>
+
+    
+    <section id="sobre"></section>
+    <section id="diseno"></section>
+    <section id="redessociales"></section>
+
+    <div class="cols">
+      <div class="left">
+        <div class="polaroid">
+          <img src="img/perfil.png" alt="Imagen foto de perfil">
+          <div class="caption">Diseñadora Gráfica</div>
+        </div>
+
+        <div class="about">
+          <div class="name">Leidy Sierra</div>
+          <div class="job">Branding · Identidad Visual · Redes Sociales</div>
+          <div class="desc">Diseñadora grafica y graduada de un Técnico en diseño gráfico y Tecnólogo producción de multimedia, soy una Bogotana amante de la ilustración, la fotografía y el lettering ; el encontrar algo que me apasiona me abrió los ojos a un nuevo mundo en el cual puedo experimentar de diferentes maneras y ser yo misma; teniendo el control de poder expresar mis sentimientos a través de cada que voy proyecto realizado.</div>
+
+        </div>
+
+        <div class="contact" aria-label="Contacto">
+          <div style="font-weight:800;color:var">Contacto</div>
+          <p class="meta">📍 Bogotá - Colombia</p>
+          <p class="meta">📞 +57 3103056529</p>
+          <p class="meta">✉️ lcasierrat@poligran.edu.co</p>
+        </div> 
+
+<section id="ilustracion" style="margin-top:25px;background:white;padding:18px;border-radius:14px;box-shadow:var">
+  <h2 style="color:var;font-weight:800;text-align:center;margin-bottom:15px">Mis Trabajos</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+    <img src="img/imagen1.png" style="width:100%;border-radius:12px;object-fit:cover;height:255px;">
+    <img src="img/imagen2.png" style="width:100%;border-radius:12px;object-fit:cover;height:255px;">
+    <img src="img/imagen3.png" style="width:100%;border-radius:12px;object-fit:cover;height:255px;">
+    <img src="img/imagen4.png" style="width:100%;border-radius:12px;object-fit:cover;height:255px;">
+    <img src="img/imagen5.png" style="width:100%;border-radius:12px;object-fit:cover;height:255px;">
+    <img src="img/imagen6.png" style="width:100%;border-radius:12px;object-fit:cover;height:255px;">
+  </div>
+</section>
+
+
+
+      </div>
+
+
+
+   
+     <div class="right">
+<div class="skills-card">
+<div class="skills-title" style="color: #ff7aa2;">HABILIDADES</div>
+<div class="badges">
+<div class="badge pink animate__animated animate__bounce">Diseño Gráfico</div>
+<div class="badge yellow animate__animated animate__bounce">Branding</div>
+<div class="badge purp animate__animated animate__bounce">Ilustración Digital</div>
+<div class="badge green animate__animated animate__bounce">Fotografía</div>
+</div>
+
+          <div style="margin-top:20px;font-weight:700">Software</div>
+          <div class="software">
+            <div class="sw animate__animated animate__bounce">Ps</div>
+            <div class="sw animate__animated animate__bounce">Ai</div>
+            <div class="sw animate__animated animate__bounce">Pr</div>
+            <div class="sw animate__animated animate__bounce">Lr</div>
+          </div>
+
+<div style="margin-top:50px;font-weight:700; color:#ff7aa2;">EDUCACIÓN</div>
+
+<div class="Educación">
+  
+  <div class="edu-item">
+    <div class="sw animate__animated animate__bounce">2020-2021</div>
+    <div class="edu-text">Técnico en Diseño Gráfico</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="sw animate__animated animate__bounce">2021-2023</div>
+    <div class="edu-text">SENA CEET- Tecnólogo Producción de Multimedia </div>
+  </div>
+
+  <div class="edu-item">
+    <div class="sw animate__animated animate__bounce">2024-2025</div>
+    <div class="edu-text">Programa de Diseño Gráfico Séptimo semestre</div>
+  </div>
+
+</div>
+
+<div style="margin-top:20px;font-weight:700;color:#ff7aa2;">EXPERIENCIA</div>
+<div class= "EXPERIENCIA">
+    <div class="edu-item">
+  <div class="sw animate__animated animate__bounce fecha-color" 
+       style="width:150px; color:#ff7aa2; padding:8px 0; text-align:center;">
+     Ene - Jun 2023
+  </div>
+  <div class="edu-text">Iglesia Manantial- Prácticante de comunicaciones</div>
+</div>
+
+  <div class="edu-item">
+    <div class="sw animate__animated animate__bounce" 
+         style="width:180px; color:#ff7aa2; padding:8px 0; text-align:center;">
+      Ago 2023 - Ene 2025
+    </div>
+    <div class="edu-text">Iglesia Manantial-Diseñadora Gráfica Junior </div>
+  </div>
+
+  <div class="edu-item">
+    <div class="sw animate__animated animate__bounce" 
+         style="width:190px; color:#ff7aa2; padding:8px 0; text-align:center;">
+    Feb 2025 - Actualmente
+    </div>
+    <div class="edu-text">Iglesia IDEFUP-Diseñadora Gráfica. </div>
+  </div>
+
+  <div class="edu-item">
+    <div class="sw animate__animated animate__bounce" 
+         style="width:140px; color:#ff7aa2; padding:5px 0; text-align:center;">
+      Actualidad 
+    </div>
+    <div class="edu-text">Freenlace</div>
+  </div>
+
+</div>
+
+
+<div class="skills-card" style="margin-top:25px;">
+<div style="font-weight:800;margin-bottom:8px">Portafolio</div>
+<div style="font-size:14px;line-height:1.4">Visita mi portafolio para ver proyectos recientes.</div>
+
+     </div>
+     <a href="https://www.behance.net/leidysierra" class="badge purp">Mira mi Behance</a>
+  </div>
+
+
+ 
+ 
+  </section>
+
+<div class="skills-card">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div style="font-weight:800">Redes Sociales</div>
+  </div>
+<div style="margin-top:15px; display:flex; gap:12px; align-items:center">
+    <a href="https://www.instagram.com/_leiii7/" target="_blank">
+      <img src="img/instagram.png" 
+           alt="Instagram" 
+           style="width:30px;height:30px;object-fit:contain;">
+    </a>
+
+  <a href="mailto:meraki070103@gmail.com">
+      <img src="img/correo.png" 
+           alt="Correo" 
+           style="width:30px;height:30px;object-fit:contain;">
+ <a>
+
+    <div class="heart">❤</div>
+  </div>
+
+
+
+<footer>
+        <p>&copy; Gracias por visitarme</p>
+    </footer>
+
+<div class="img-modal" id="modal">
+  <span id="cerrar">&times;</span>
+  <img id="modal-img">
+</div>
+
+<script>
+  const imagenes = document.querySelectorAll("#ilustracion img");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  const cerrar = document.getElementById("cerrar");
+
+  imagenes.forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    });
+  });
+
+  cerrar.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if(e.target === modal){
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+
+</body></html>
+
